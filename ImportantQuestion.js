@@ -296,3 +296,40 @@ function reverseStr(str) {
 let str = "Hello";
 let resStr = reverseStr(str);
 console.log(resStr);
+
+
+
+// TWO SUM M1 - TC O(n^2) SC O(1).
+
+var twoSum = function(nums, target) {
+    
+   for(let i=0; i<nums.length; i++){
+       for(let j=i+1; j<nums.length; j++){
+           if(nums[j] === target - nums[i]){
+              return [i, j];
+           }
+       }
+   }
+};
+console.log(twoSum([2, 7, 11, 15], 9)); 
+
+//M2 -- TC O(n) SC  O(n).
+
+const twoSum = (nums, target) => {
+  let numMap = new Map();
+
+  for (let i = 0; i < nums.length; i++) {
+    const complement = target - nums[i];
+    if (numMap.has(complement)) {
+      return [numMap.get(complement), i];
+    }
+    numMap.set(nums[i], i);
+  }
+
+  return [];
+};
+
+// Example usage
+console.log(twoSum([2, 7, 11, 15], 9)); // Output: [0, 1] (indices of 2 and 7)
+console.log(twoSum([3, 2, 4], 6)); // Output: [1, 2] (indices of 2 and 4)
+console.log(twoSum([3, 3], 6)); // Output: [0, 1] (indices of two 3s)
